@@ -13,3 +13,6 @@ F12 -> network -> (click on request) -> response (view what the server returned)
 
 
 request page -> response page -> request images if exists -> return image if requested -> ...
+
+
+DOM (document object model) = manipulation of HTML elements
