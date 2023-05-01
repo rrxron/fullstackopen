@@ -1,0 +1,15 @@
+one cert from part 0 - 7, then separate cert for each course part
+
+
+F12 -> network -> check: "disable cache" (so that the browser does not store stale webpages)
+
+F12 -> network -> (click on request) -> headers (to view webpage headers during a get request)
+  can view request & response headers
+
+request = tell server what you want
+response = what the server does to your request
+
+F12 -> network -> (click on request) -> response (view what the server returned)
+
+
+request page -> response page -> request images if exists -> return image if requested -> ...
