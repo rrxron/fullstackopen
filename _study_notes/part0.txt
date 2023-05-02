@@ -16,3 +16,20 @@ request page -> response page -> request images if exists -> return image if req
 
 
 DOM (document object model) = manipulation of HTML elements
+
+
+cause of javascript fatigue:
+  1. rapidly changing ecosystem with new tools/libraries
+  2. fast iteration and development of tools/libraries
+
+avoiding javascript fatigue (all of these needs to be positive):
+  1. keep scope limited and narrow so you define the use-case properly to mitigate analysis paralysis
+  2. check community if alot are using it in production, need battle tested
+  3. does it actually solve the problem?
+
+key is learning fast by mastering foundations:
+  1. language syntax
+  2. data structures and algorithms
+  3. practice practice practice
+
+lastly, need to have real-world practicality and avoid time-sinks
