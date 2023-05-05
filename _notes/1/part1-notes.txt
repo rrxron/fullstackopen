@@ -6,5 +6,9 @@ using pnpm instead of npm:
 >>pnpx create-react-app
 >>pnpm start
 
-
 react app runs at port 3000 by default
+
+layout of react components are written using JSX (similar to Thymeleaf + Java Spring)
+compilation is handled by Babel
+
+components are a feature to enable for code reuseability and maintainability
