@@ -1,0 +1,10 @@
+default react tooling:  create-react-app
+possible new tooling:  vite
+
+
+using pnpm instead of npm:
+>>pnpx create-react-app
+>>pnpm start
+
+
+react app runs at port 3000 by default
