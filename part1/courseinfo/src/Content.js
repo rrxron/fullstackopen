@@ -2,9 +2,9 @@ import Part from './Part'
 
 const Content = (props) => (
   <div>
-    <Part p={props.p1} e={props.e1} />
-    <Part p={props.p2} e={props.e2} />
-    <Part p={props.p3} e={props.e3} />
+    <Part n={props.parts[0].name} e={props.parts[0].exercises} />
+    <Part n={props.parts[1].name} e={props.parts[1].exercises} />
+    <Part n={props.parts[2].name} e={props.parts[2].exercises} />
   </div>
 )
 
