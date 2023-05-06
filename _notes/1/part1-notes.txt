@@ -26,3 +26,51 @@ objects are not valid as a react child, you can't render objects
 you need to retrieve the property values of the object instead
 
 arrays can be rendered as long as it contains an array that are allowed to be rendered (numbers, strings, boolean, etc.)
+
+
+JavaScript standard = ECMAScript, latest release = June 2022, ECMAScript2022, ES13
+
+Babel = transpile latest js to compatible js code for browsers
+
+NodeJS = js runtime environment based on chrome v8 js engine
+
+
+variable declarations;
+  const = constant, can't be changed
+  let = can be changed
+  avoid var due to unintended effects
+
+
+Array = declared as const, still points to the same object even if the contents change
+
+Array.forEach(x=>{...})  // iteration
+
+in ReactJS, we use functional programming where immutability is important
+immutability = don't change the value of the variable, instead return a new value
+
+Array.map(x=>{...})  // iterate through array and return new array
+
+
+Array destructuring
+
+  const a = [7,6,5,4,3,2,1]  // declare array
+  const [b, c, ...d] = a     // assign 1st value of a to b, 2nd value of a to c, the rest to d using rest (...) operator
+
+
+Object literals;
+
+  const obj1 = { prop1: 1, prop2: 2, prop3: false }
+  console.log(obj1.prop1)      // 1
+  console.log(obj1['prop3'])   // false
+
+  obj1.prop4 = 'new property'
+  obj1['prop5'] = 'another new property'   // can only use valid property names
+
+
+function declaration = where you use 'function' keyword followed by it's name;
+
+  function ThisIsMyFunction() { .... }
+
+function expression = where you use 'function' keyword without it's name;
+
+  const variable = function() { ... }
