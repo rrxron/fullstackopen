@@ -12,3 +12,17 @@ layout of react components are written using JSX (similar to Thymeleaf + Java Sp
 compilation is handled by Babel
 
 components are a feature to enable for code reuseability and maintainability
+
+
+passing data between components: props
+
+component names should be in capitalcase
+
+top level component needs to be contained in one root element
+
+ideally, use fragments <></> on top level component to avoid an extra <div></div>
+
+objects are not valid as a react child, you can't render objects
+you need to retrieve the property values of the object instead
+
+arrays can be rendered as long as it contains an array that are allowed to be rendered (numbers, strings, boolean, etc.)
