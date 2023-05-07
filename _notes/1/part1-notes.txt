@@ -74,3 +74,33 @@ function declaration = where you use 'function' keyword followed by it's name;
 function expression = where you use 'function' keyword without it's name;
 
   const variable = function() { ... }
+
+
+'this':
+
+  const objX = {
+    value: 7,
+    objFunc: function() { console.log(value) }
+  }
+  objX.objFunc2 = function() {... }
+
+  objX.objFunc() // 7
+
+  const referenceToObjFunc = objX.objFunc
+  referenceToObjFunc() //undefined
+
+    when we call method by reference:
+      1. it loses knowledge of original 'this' (this.value)
+      2. 'this' is referred to the global object
+
+  setTimeout(objX.objFunc, 1000)       //undefined
+  setTimeout(objX.objFunc.bind(objX))  //7
+
+    calling bind creates a function where 'this' is bound to 'objX' object
+
+Arrow Functions will behave differently depending on how 'this' is used contextually
+
+
+JavaScript info links:
+  https://developer.mozilla.org/en-US/docs/Web/JavaScript/Language_overview
+  https://eloquentjavascript.net/
