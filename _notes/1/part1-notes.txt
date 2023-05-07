@@ -104,3 +104,7 @@ Arrow Functions will behave differently depending on how 'this' is used contextu
 JavaScript info links:
   https://developer.mozilla.org/en-US/docs/Web/JavaScript/Language_overview
   https://eloquentjavascript.net/
+
+
+component helper functions:
+  functions that are called during rendering

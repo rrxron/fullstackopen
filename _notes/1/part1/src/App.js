@@ -1,27 +1,19 @@
-const Hello = (props) => {
-  console.log(props)
+const Hello = ({ name, age }) => {
+  const bornYear = () => new Date().getFullYear() - age
+
   return (
     <div>
       <p>
-        Hello {props.name}, you are {props.age} years old
+        Hello {name}, you are {age} years old
       </p>
+      <p>So you were probably born in {bornYear()}</p>
     </div>
   )
 }
 
-const App = () => {
-  const friends = [
-    { name: 'Peter', age: 4 },
-    { name: 'Maya', age: 10 },
-  ]
-
-  return (
-    <>
-      <p>greetings</p>
-      <Hello name={friends[0].name} age={friends[0].age} />
-      <Hello name={friends[1].name} age={friends[1].age} />
-    </>
-  )
+const App = (props) => {
+  const { counter } = props
+  return <div>{counter}</div>
 }
 
 export default App
