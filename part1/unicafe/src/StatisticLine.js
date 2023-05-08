@@ -1,7 +1,10 @@
 const StatisticLine = ({ text, value, prefix = '' }) => (
-  <div>
-    {text} {value} {prefix}
-  </div>
+  <tr>
+    <td>{text}</td>
+    <td>
+      {value} {prefix}
+    </td>
+  </tr>
 )
 
 export default StatisticLine
