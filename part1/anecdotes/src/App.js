@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import MostVotes from './MostVotes'
 
 const App = () => {
   const anecdotes = [
@@ -13,7 +14,6 @@ const App = () => {
   ]
 
   const [selected, setSelected] = useState(0)
-
   const [points, setPoints] = useState({
     0: 0,
     1: 0,
@@ -24,6 +24,7 @@ const App = () => {
     6: 0,
     7: 0,
   })
+  const [hasVote, setHasVote] = useState(false)
 
   const retrieveAnecdote = () => {
     const index = parseInt((Math.random() * (anecdotes.length - 1)).toFixed())
@@ -33,15 +34,18 @@ const App = () => {
   const handleVote = () => {
     const newObj = { ...points, [selected]: points[selected] + 1 }
     setPoints(newObj)
+    setHasVote(true)
   }
 
   return (
     <div>
+      <h1>Anecdote of the day</h1>
       {anecdotes[selected]}
       <div>
         <button onClick={handleVote}>vote</button>
         <button onClick={retrieveAnecdote}>next anecdote</button>
       </div>
+      <MostVotes points={points} anecdotes={anecdotes} hasVote={hasVote} />
     </div>
   )
 }
