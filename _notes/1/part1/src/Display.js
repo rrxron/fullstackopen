@@ -1,3 +1,3 @@
-const Display = ({ counter }) => <div>{counter}</div>
+const Display = ({ value }) => <div>{value}</div>
 
 export default Display

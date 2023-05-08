@@ -121,3 +121,53 @@ state needs to be "lifted up" where it should be contained within the component 
 components needs to be written as small as possible and also reuseable
 
 always think of how to simplify the components further
+
+
+use object spread (...) operator so you don't have to repeat declaration of an untouched object property value
+
+in react, you need to avoid mutating the state directly... if you want to update state then you return a new state value
+
+IMPORTANT = react state changes are "asynchronous" therefore trying to get the updated state is delayed most of the time
+FIX = use a const variable instead of updating state value to the function returned from useState() hook
+    = define a const variable, place your updated state value and you can also use that value to
+      other state value updates
+    = you don't extract the expected changed value of the state because of the delayed update
+      so just use a const variable in this case
+
+
+conditional rendering, use a boolean condition to return different rendering
+
+anywhere in js code write "debugger" to stop debugging at that line
+
+install React developer tools on browser to help in debugging
+
+
+
+Rule of Hooks:
+  don't call useState() inside; a loop, a conditional expression, a non component function
+  useState() is always top level
+
+
+
+Event Handler Functions that return a Function
+
+  event handlers can be a function that returns a function
+  therefore we can create a function that returns a function
+  meanwhile on the event, we execute the main function because
+  the main function returns a function so it works
+
+    const mainFunc = () => () => console.log('yo')
+    <button onClick={mainFunc()}></button>
+
+  what is the purpose? for function parameters
+
+    // factory pattern, generic function that produces custom behavior depending on parameters
+    const mainFunc = (arg) => () => console.log(`hey ${arg}`)
+    <button onClick={mainFunc('red')}></button>
+    <button onClick={mainFunc('blue')}></button>
+
+  alternatively you can just implement useState() hook
+
+
+  Do not define Components within Components
+    it leads to optimization problems
