@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import Statistics from './Statistics'
+import Button from './Button'
 
 const App = () => {
   const [good, setGood] = useState(0)
@@ -50,9 +51,9 @@ const App = () => {
   return (
     <>
       <h1>give feedback</h1>
-      <button onClick={goodHandler}>good</button>
-      <button onClick={neutralHandler}>neutral</button>
-      <button onClick={badHandler}>bad</button>
+      <Button handler={goodHandler} text="good" />
+      <Button handler={neutralHandler} text="neutral" />
+      <Button handler={badHandler} text="bad" />
       <Statistics
         good={good}
         neutral={neutral}
