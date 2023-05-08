@@ -108,3 +108,16 @@ JavaScript info links:
 
 component helper functions:
   functions that are called during rendering
+
+
+
+useState() hook
+when state changes, the component gets rerendered
+
+events needs to have an assigned "function reference" and not a "function call"
+best practice not to define the event handlers inside a component, use a variable to assign a function reference
+
+state needs to be "lifted up" where it should be contained within the component ancestor,
+components needs to be written as small as possible and also reuseable
+
+always think of how to simplify the components further
