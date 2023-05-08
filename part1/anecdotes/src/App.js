@@ -14,15 +14,32 @@ const App = () => {
 
   const [selected, setSelected] = useState(0)
 
+  const [points, setPoints] = useState({
+    0: 0,
+    1: 0,
+    2: 0,
+    3: 0,
+    4: 0,
+    5: 0,
+    6: 0,
+    7: 0,
+  })
+
   const retrieveAnecdote = () => {
     const index = parseInt((Math.random() * (anecdotes.length - 1)).toFixed())
     setSelected(index)
+  }
+
+  const handleVote = () => {
+    const newObj = { ...points, [selected]: points[selected] + 1 }
+    setPoints(newObj)
   }
 
   return (
     <div>
       {anecdotes[selected]}
       <div>
+        <button onClick={handleVote}>vote</button>
         <button onClick={retrieveAnecdote}>next anecdote</button>
       </div>
     </div>
