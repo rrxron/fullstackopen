@@ -1,0 +1,18 @@
+when something is wrong, do not guess... use console.log() always
+
+every looped element within a component needs a "key" attribute, example:
+
+      <ul>
+        {notes.map(note => <li key={note.id}>{note.content}</li>)}
+      </ul>
+
+the "key" attribute and it's value only exists within react and not rendered on the html page
+
+
+Array.map() = always creates a new array to avoid mutation
+
+
+Anti-Pattern = index as key in a looped element
+
+  notes.map((note, index)=>... key={index})
+  because "index" is not related to the data that the elements consume
