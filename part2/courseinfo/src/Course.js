@@ -23,18 +23,12 @@ const Total = ({ sum }) => (
 
 const Course = ({ course }) => {
   const parts = course.parts
+  const total = parts.reduce((acc, obj) => acc + obj.exercises, 0)
   return (
     <>
       <Header course={course} />
       <Content parts={parts} />
-      <Total
-        sum={
-          parts[0].exercises +
-          parts[1].exercises +
-          parts[2].exercises +
-          parts[3].exercises
-        }
-      />
+      <Total sum={total} />
     </>
   )
 }
