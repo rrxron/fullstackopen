@@ -6,11 +6,16 @@ const App = () => {
 
   const handleForm = (e) => {
     e.preventDefault()
-    const newPerson = {
-      name: newName,
+    if (persons.some(({ name }) => name === newName)) {
+      alert(`${newName} is already added to phonebook`)
+    } else {
+      setPersons(
+        persons.concat({
+          name: newName,
+        })
+      )
+      setNewName('')
     }
-    setPersons(persons.concat(newPerson))
-    setNewName('')
   }
 
   const handleNameChange = (e) => {
