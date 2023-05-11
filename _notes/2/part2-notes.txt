@@ -16,3 +16,6 @@ Anti-Pattern = index as key in a looped element
 
   notes.map((note, index)=>... key={index})
   because "index" is not related to the data that the elements consume
+
+
+always use Array.concat() for inserting arrays so it does not mutate state
