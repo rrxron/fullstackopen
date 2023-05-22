@@ -49,3 +49,12 @@ Promise = object representing an eventual completion or failure of an asynchrono
         a. pending = final value is not available yet
         b. fulfilled = operation completed, final value available, success operation.. also called 'resolved'
         c. rejected = error prevented the final value from being determined
+
+
+useEffect() = perform side effects on function components
+            = data fetching, subscription, manually changing dom
+            = right tool for fetching data from a server
+            = remember that updating state also rerenders component
+            = executed AFTER rendering the component for the
+              FIRST TIME IF we pass an empty array as the second parameter,
+              otherwise it is triggered if the value of the second parameter changes
