@@ -58,3 +58,12 @@ useEffect() = perform side effects on function components
             = executed AFTER rendering the component for the
               FIRST TIME IF we pass an empty array as the second parameter,
               otherwise it is triggered if the value of the second parameter changes
+
+
+REST
+  resources accessed via URL using HTTP GET
+  creating reseource via HTTP POST, data is sent to the body of the request in json format
+  note = let server handle the generation of IDs and not the client
+
+  Array.concat() appends new element on array and returns a new array to avoid state mutation
+  we make a shallow copy of an object (make new object from existing object) that is candidate for changes
