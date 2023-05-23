@@ -71,3 +71,7 @@ REST
 
 need to apply "single responsibility principle" therefore if communicating a server,
 it is wise to implement it on it's own module
+
+
+best practice is to initiate states that will handle array as 'null'
+and handle the rendering by returning 'null' if the array is not initialized
