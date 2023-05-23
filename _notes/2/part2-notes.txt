@@ -67,3 +67,7 @@ REST
 
   Array.concat() appends new element on array and returns a new array to avoid state mutation
   we make a shallow copy of an object (make new object from existing object) that is candidate for changes
+
+
+need to apply "single responsibility principle" therefore if communicating a server,
+it is wise to implement it on it's own module
