@@ -49,6 +49,19 @@ const App = () => {
           person.name.toLowerCase().startsWith(filterValue.toLowerCase())
         )
 
+  const delete_item = (id, name) => () => {
+    if (window.confirm(`Delete ${name} ?`)) {
+      phonebookService
+        .remove(id)
+        .then((deleted) => {
+          if (deleted) {
+            setPersons(persons.filter((person) => person.id !== id))
+          }
+        })
+        .catch((e) => console.log(e))
+    }
+  }
+
   return (
     <>
       <h2>Phonebook</h2>
@@ -65,7 +78,7 @@ const App = () => {
         handleForm={handleForm}
       />
       <h3>Numbers</h3>
-      <Persons filtered_person={filtered_person} />
+      <Persons filtered_person={filtered_person} delete_item={delete_item} />
     </>
   )
 }

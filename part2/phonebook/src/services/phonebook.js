@@ -12,6 +12,9 @@ const create = (newObject) =>
     .post(`${getBaseUrl()}/persons`, newObject)
     .then((response) => response.data)
 
-const phonebookService = { get, create }
+const remove = (id) =>
+  axios.delete(`${getBaseUrl()}/persons/${id}`).then(() => true)
+
+const phonebookService = { get, create, remove }
 
 export default phonebookService
