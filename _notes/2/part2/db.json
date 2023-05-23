@@ -22,7 +22,7 @@
     },
     {
       "content": "my test",
-      "important": true,
+      "important": false,
       "id": 5
     }
   ]
