@@ -12,7 +12,8 @@ const App = () => {
   const [newName, setNewName] = useState('')
   const [newNumber, setNewNumber] = useState('')
   const [filterValue, setFilterValue] = useState('')
-  const [notification, setNotification] = useState(null)
+  const [notificationInfo, setNotificationInfo] = useState(null)
+  const [notificationError, setNotificationError] = useState(null)
 
   useEffect(() => {
     phonebookService
@@ -34,17 +35,33 @@ const App = () => {
           phonebookService
             .update(person_found.id, { ...person_found, number: newNumber })
             .then((updated_person) => {
-              setNotification(`Updated ${newName} number`)
-              setTimeout(() => setNotification(null), 5000)
+              setNotificationInfo(`Updated ${newName} number`)
+              setTimeout(() => setNotificationInfo(null), 5000)
               setPersons(
                 persons.map((person) =>
                   person.id === updated_person.id ? updated_person : person
                 )
               )
+            })
+            .catch((e) => {
+              console.log(
+                `Information of ${person_found.name} has already been removed from the server`
+              )
+              setNotificationError(
+                `Information of ${person_found.name} has already been removed from the server`
+              )
+              setTimeout(() => {
+                setNotificationError(null)
+              }, 5000)
+
+              setPersons(
+                persons.filter((person) => person.id !== person_found.id)
+              )
+            })
+            .finally(() => {
               setNewName('')
               setNewNumber('')
             })
-            .catch((e) => console.log(e))
         }
       }
     } else {
@@ -57,8 +74,8 @@ const App = () => {
           setPersons(persons.concat(new_person))
           setNewName('')
           setNewNumber('')
-          setNotification(`Added ${newName}`)
-          setTimeout(() => setNotification(null), 5000)
+          setNotificationInfo(`Added ${newName}`)
+          setTimeout(() => setNotificationInfo(null), 5000)
         })
         .catch((e) => console.log(e))
     }
@@ -91,7 +108,8 @@ const App = () => {
   return (
     <>
       <h2>Phonebook</h2>
-      <Notification message={notification} />
+      <Notification message={notificationInfo} />
+      <Notification message={notificationError} isInfo={false} />
       <Filter
         filterValue={filterValue}
         handleFilterChange={handleFilterChange}

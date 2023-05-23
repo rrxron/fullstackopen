@@ -1,7 +1,16 @@
-.notify {
+.notification-info {
   background-color: #a38d8d;
   border: 1px solid #11c060;
   color: #11c060;
+  padding: 0.5rem;
+  margin: 0.5rem;
+  border-radius: 5px;
+}
+
+.notification-error {
+  background-color: #a38d8d;
+  border: 1px solid #ff0101;
+  color: #ff0101;
   padding: 0.5rem;
   margin: 0.5rem;
   border-radius: 5px;
