@@ -22,7 +22,27 @@ const App = () => {
   const handleForm = (e) => {
     e.preventDefault()
     if (persons.some(({ name }) => name === newName)) {
-      alert(`${newName} is already added to phonebook`)
+      if (
+        window.confirm(
+          `${newName} is already added to phonebook, replace old number with a new one?`
+        )
+      ) {
+        const person_found = persons.find((person) => person.name === newName)
+        if (person_found) {
+          phonebookService
+            .update(person_found.id, { ...person_found, number: newNumber })
+            .then((updated_person) => {
+              setPersons(
+                persons.map((person) =>
+                  person.id === updated_person.id ? updated_person : person
+                )
+              )
+              setNewName('')
+              setNewNumber('')
+            })
+            .catch((e) => console.log(e))
+        }
+      }
     } else {
       phonebookService
         .create({

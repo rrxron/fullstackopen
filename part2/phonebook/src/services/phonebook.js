@@ -1,20 +1,22 @@
 import axios from 'axios'
 
-const baseURL = `http://localhost:3001`
+const baseURL = `http://localhost:3001/persons`
 
 const getBaseUrl = () => baseURL
 
 const get = () =>
-  axios.get(`${getBaseUrl()}/persons`).then((response) => response.data)
+  axios.get(`${getBaseUrl()}/`).then((response) => response.data)
 
 const create = (newObject) =>
+  axios.post(`${getBaseUrl()}/`, newObject).then((response) => response.data)
+
+const update = (id, updatedObject) =>
   axios
-    .post(`${getBaseUrl()}/persons`, newObject)
+    .put(`${getBaseUrl()}/${id}`, updatedObject)
     .then((response) => response.data)
 
-const remove = (id) =>
-  axios.delete(`${getBaseUrl()}/persons/${id}`).then(() => true)
+const remove = (id) => axios.delete(`${getBaseUrl()}/${id}`).then(() => true)
 
-const phonebookService = { get, create, remove }
+const phonebookService = { get, create, update, remove }
 
 export default phonebookService
