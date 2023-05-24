@@ -11,6 +11,7 @@ const App = () => {
   const [searchTerm, setSearchTerm] = useState('')
   const [allCountries, setAllCountries] = useState([])
   const [searchedCountry, setSearchedCountry] = useState([])
+  const [noDisplay, setNoDisplay] = useState(true)
 
   useEffect(() => {
     countriesService.getAllCountries().then((countries) => {
@@ -19,10 +20,18 @@ const App = () => {
   }, [])
 
   useEffect(() => {
+    if (searchTerm === '') {
+      setNoDisplay(true)
+    }
+  }, [searchTerm])
+
+  //TODO: temporary, to be removed on final submission
+  useEffect(() => {
     if (allCountries.length > 0) {
       console.log(allCountries)
     }
   }, [allCountries])
+  //TODO: temporary, to be removed on final submission
 
   const countryHandler = (e) => {
     setSearchedCountry([])
@@ -31,16 +40,19 @@ const App = () => {
     if (allCountries.length > 0) {
       setSearchedCountry(
         allCountries.filter(
-          (country) => country.name.common.toLowerCase().indexOf(term) !== -1
+          (country) => country.name.official.toLowerCase().indexOf(term) !== -1
         )
       )
+      setNoDisplay(false)
+    } else {
+      setNoDisplay(true)
     }
   }
 
   return (
     <>
       <FindCountry value={searchTerm} countryHandler={countryHandler} />
-      {searchedCountry.length > 10 ? (
+      {noDisplay ? null : searchedCountry.length > 10 ? (
         <ErrorMessage />
       ) : searchedCountry.length === 1 ? (
         <CountryDetail
