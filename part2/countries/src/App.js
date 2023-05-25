@@ -25,14 +25,6 @@ const App = () => {
     }
   }, [searchTerm])
 
-  //TODO: temporary, to be removed on final submission
-  useEffect(() => {
-    if (allCountries.length > 0) {
-      console.log(allCountries)
-    }
-  }, [allCountries])
-  //TODO: temporary, to be removed on final submission
-
   const countryHandler = (e) => {
     setSearchedCountry([])
     const term = e.target.value.toLowerCase()

@@ -10,7 +10,7 @@ const CountryDetail = ({ name, capital, area, languages, flag }) => {
   return (
     <div>
       <h1 key={name}>{name}</h1>
-      <div key={capital}>capital {capital}</div>
+      <div key={'capital_' + capital}>capital {capital}</div>
       <div key={area}>area {area}</div>
       <br />
       <div>
