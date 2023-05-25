@@ -1,15 +1,27 @@
+import { useEffect, useState } from 'react'
+
+import weatherService from '../services/weather'
+
 const CountryDetail = ({ name, capital, area, languages, flag }) => {
+  const [weatherData, setWeatherData] = useState(null)
+
   const languagesList = () => {
-    const api_key = process.env.REACT_APP_API_KEY
-
-    console.log(api_key)
-
     const languageList = []
     for (let k in languages) {
       languageList.push(languages[k])
     }
     return languageList
   }
+
+  useEffect(() => {
+    weatherService.getData(capital[0]).then((data) => {
+      setWeatherData({
+        wind: data.wind.speed,
+        temp: data.main.temp,
+        weatherIcon: `https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`,
+      })
+    })
+  }, [capital])
 
   return (
     <div>
@@ -28,10 +40,18 @@ const CountryDetail = ({ name, capital, area, languages, flag }) => {
       <div>
         <img key={flag} src={flag} alt={name}></img>
       </div>
-      <h1 key={'weather_in_' + capital}>Weather in {capital}</h1>
-      <div>temperature {1}</div>
-      <div>icon {2}</div>
-      <div>wind {3}</div>
+      {weatherData ? (
+        <div>
+          <h1 key={'weather_in_' + capital}>Weather in {capital}</h1>
+          <div key={weatherData.temp + ' Celcius'}>
+            temperature {weatherData.temp} Celcius
+          </div>
+          <div key={weatherData.weatherIcon}>
+            <img alt="weather-icon" src={weatherData.weatherIcon}></img>
+          </div>
+          <div key={weatherData.wind + ' m/s'}>wind {weatherData.wind} m/s</div>
+        </div>
+      ) : null}
     </div>
   )
 }
