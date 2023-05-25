@@ -1,5 +1,9 @@
 const CountryDetail = ({ name, capital, area, languages, flag }) => {
   const languagesList = () => {
+    const api_key = process.env.REACT_APP_API_KEY
+
+    console.log(api_key)
+
     const languageList = []
     for (let k in languages) {
       languageList.push(languages[k])
@@ -24,6 +28,10 @@ const CountryDetail = ({ name, capital, area, languages, flag }) => {
       <div>
         <img key={flag} src={flag} alt={name}></img>
       </div>
+      <h1 key={'weather_in_' + capital}>Weather in {capital}</h1>
+      <div>temperature {1}</div>
+      <div>icon {2}</div>
+      <div>wind {3}</div>
     </div>
   )
 }
