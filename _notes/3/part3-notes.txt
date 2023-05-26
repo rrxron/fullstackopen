@@ -1,0 +1,23 @@
+nodejs has a built-in web server module called "http"
+
+CommonJS modules:
+  const http = require('http')
+
+ES6 modules:
+  import http from 'http'
+
+
+nodejs uses CommonJS modules
+
+
+request = contains all information of the HTTP request
+response = define how the request is responded to
+
+
+express:
+  response.send()
+    automatically sets Content-Type header to 'text/html'
+
+  response.json()
+    array will be automatically converted to valid "JSON formatted string"
+    automatically sets Content-Type header to 'application/json'
