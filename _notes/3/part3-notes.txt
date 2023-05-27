@@ -21,3 +21,29 @@ express:
   response.json()
     array will be automatically converted to valid "JSON formatted string"
     automatically sets Content-Type header to 'application/json'
+
+nodemon:
+  watch files in directory and any changes lets it restart node
+  however, it will not restart the browser like reactjs because it has no hotreload
+  >> npm i -D nodemon
+
+
+endpoints in REST are called 'resources'
+
+  url        verb    functionality
+  notes/10   GET     fetch single resource
+  notes      GET     fetch all resources
+  notes      POST    create a new resource based on request data
+  notes/10   DELETE  remove the identified resource
+  notes/10   PUT     replace entire identified resource with request data
+  notes/10   PATCH   replace a part of the identified resouce with request data
+
+
+whatever parameter you pass on the route, it will be of type 'string'
+therefore when you use that to do a type equality (===), it might fail
+because the parameter is a string and the possible compared field is a Number
+
+note: install vscode plugin "REST Client" and make a .rest file to start sending test requests
+
+
+use middleware app.use(express.json()), to allow posting using body property of request
