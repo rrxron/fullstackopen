@@ -56,4 +56,19 @@ app.delete('/api/persons/:id', (request, response) => {
   response.status(204).end()
 })
 
+app.post('/api/persons/', (request, response) => {
+  const reqBody = request.body
+  if (!reqBody.name || !reqBody.number) {
+    response.status(400).json({ error: 'please check parameters' })
+  } else {
+    const newId = Math.floor(Math.random() * 999999999)
+    persons = persons.concat({
+      id: newId,
+      name: reqBody.name,
+      number: reqBody.number,
+    })
+    response.status(201).json({ message: 'success in creating new person' })
+  }
+})
+
 app.listen(3001, () => console.log(`phonebook backend running`))
