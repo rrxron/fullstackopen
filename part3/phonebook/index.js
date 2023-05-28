@@ -36,4 +36,13 @@ app.get('/info', (request, response) => {
   )
 })
 
+app.get('/api/persons/:id', (request, response) => {
+  const idToFind = Number(request.params.id)
+  const foundPerson = persons.find((p) => p.id === idToFind)
+  if (!foundPerson) {
+    return response.status(404).json({ error: 'record not found' })
+  }
+  response.json(foundPerson)
+})
+
 app.listen(3001, () => console.log(`phonebook backend running`))
