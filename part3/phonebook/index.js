@@ -61,13 +61,20 @@ app.post('/api/persons/', (request, response) => {
   if (!reqBody.name || !reqBody.number) {
     response.status(400).json({ error: 'please check parameters' })
   } else {
-    const newId = Math.floor(Math.random() * 999999999)
-    persons = persons.concat({
-      id: newId,
-      name: reqBody.name,
-      number: reqBody.number,
-    })
-    response.status(201).json({ message: 'success in creating new person' })
+    const foundPerson = persons.find(
+      (p) => p.name.toLowerCase().trim() === reqBody.name.toLowerCase().trim()
+    )
+    if (foundPerson) {
+      response.status(400).json({ error: 'name must be unique' })
+    } else {
+      const newId = Math.floor(Math.random() * 999999999)
+      persons = persons.concat({
+        id: newId,
+        name: reqBody.name,
+        number: reqBody.number,
+      })
+      response.status(201).json({ message: 'success in creating new person' })
+    }
   }
 })
 
