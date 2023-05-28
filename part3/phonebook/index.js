@@ -1,7 +1,7 @@
 const express = require('express')
 const app = express()
 
-const persons = [
+let persons = [
   {
     id: 1,
     name: 'Arto Hellas',
@@ -36,13 +36,24 @@ app.get('/info', (request, response) => {
   )
 })
 
+const findPerson = (idToFind) => persons.find((p) => p.id === idToFind)
+
 app.get('/api/persons/:id', (request, response) => {
-  const idToFind = Number(request.params.id)
-  const foundPerson = persons.find((p) => p.id === idToFind)
+  const foundPerson = findPerson(Number(request.params.id))
   if (!foundPerson) {
     return response.status(404).json({ error: 'record not found' })
   }
   response.json(foundPerson)
+})
+
+app.delete('/api/persons/:id', (request, response) => {
+  const idToFind = Number(request.params.id)
+  const foundPerson = findPerson(idToFind)
+  if (!foundPerson) {
+    return response.status(404).json({ error: 'record not found' })
+  }
+  persons = persons.filter((p) => p.id !== idToFind)
+  response.status(204).end()
 })
 
 app.listen(3001, () => console.log(`phonebook backend running`))
