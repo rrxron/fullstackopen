@@ -47,3 +47,20 @@ note: install vscode plugin "REST Client" and make a .rest file to start sending
 
 
 use middleware app.use(express.json()), to allow posting using body property of request
+
+
+GET requests needs to be safe, meaning no side effects, meaning no change in database
+if the request does not generate side effects, then the result should be the same regardless of repeated operations
+idempotent = no matter how much the operation is executed, the result is the same
+
+
+nodejs middleware = functions that can be used for handling request and response objects
+                  = example: express.json()  is a json parser middleware
+                  = can have more than one middleware, their execution is in the order they are defined
+
+    const myMiddleware = (request, response, next) => {
+      // execute operations
+      next()   // yield control to next middleware
+    }
+
+    app.use(myMiddleware)

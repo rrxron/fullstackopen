@@ -1,6 +1,17 @@
 const express = require('express')
 const app = express()
 
+const requestLogger = (request, response, next) => {
+  console.log('method: ', request.method)
+  console.log('path: ', request.path)
+  console.log('body: ', request.body)
+  console.log('---')
+  next()
+}
+
+app.use(express.json())
+app.use(requestLogger)
+
 let notes = [
   {
     id: 1,
@@ -18,8 +29,6 @@ let notes = [
     important: true,
   },
 ]
-
-app.use(express.json())
 
 app.get('/', (request, response) => {
   response.send(`<h1>Hello Nightmare.</h1>`)
@@ -63,6 +72,12 @@ app.post('/api/notes', (request, response) => {
   notes = notes.concat(note)
   response.json(note)
 })
+
+const unknownEndpoint = (request, response) => {
+  response.status(404).send({ error: 'unknown endpoint' })
+}
+
+app.use(unknownEndpoint) // defined last, order of execution is order of definition
 
 const PORT = 3001
 app.listen(PORT)
